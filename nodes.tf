@@ -172,7 +172,7 @@ resource "aws_launch_template" "node_launch_template" {
     "Name" = "NodeLaunchTemplate"
   }
 
-  image_id = "ami-03614aa887519d781" #data.aws_ssm_parameter.node_ami.value
+  image_id = data.aws_ssm_parameter.node_ami.value  # "ami-03614aa887519d781"
 
   metadata_options {
     http_put_response_hop_limit = 2
@@ -195,7 +195,7 @@ resource "aws_launch_template" "node_launch_template" {
     /opt/aws/bin/cfn-signal --exit-code $? \
                 --stack  ${var.cluster_name}-stack \
                 --resource NodeGroup  \
-                --region eu-central-1
+                --region us-east-1
     EOF
   )
 }
