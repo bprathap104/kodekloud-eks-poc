@@ -195,7 +195,7 @@ resource "aws_launch_template" "node_launch_template" {
     /opt/aws/bin/cfn-signal --exit-code $? \
                 --stack  ${var.cluster_name}-stack \
                 --resource NodeGroup  \
-                --region us-east-1
+                --region eu-central-1
     EOF
   )
 }
