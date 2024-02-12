@@ -172,7 +172,7 @@ resource "aws_launch_template" "node_launch_template" {
     "Name" = "NodeLaunchTemplate"
   }
 
-  image_id = "ami-03cceb19496c25679" #data.aws_ssm_parameter.node_ami.value
+  image_id = "ami-03614aa887519d781" #data.aws_ssm_parameter.node_ami.value
 
   metadata_options {
     http_put_response_hop_limit = 2
