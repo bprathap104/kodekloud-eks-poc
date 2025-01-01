@@ -73,6 +73,11 @@ resource "aws_iam_role_policy_attachment" "ssm_managed_instance_core" {
   role       = aws_iam_role.node_instance_role.name
 }
 
+resource "aws_iam_role_policy_attachment" "ec2_access" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+  role       = aws_iam_role.node_instance_role.name
+}
+
 
 # Instance profile to associate above role with worker nodes
 resource "aws_iam_instance_profile" "node_instance_profile" {
@@ -173,9 +178,9 @@ resource "aws_launch_template" "node_launch_template" {
     }
   }
 
-  iam_instance_profile {
-    name = aws_iam_instance_profile.node_instance_profile.name
-  }
+  # iam_instance_profile {
+  #   name = aws_iam_instance_profile.node_instance_profile.name
+  # }
 
   key_name      = aws_key_pair.eks_kp.key_name
   instance_type = "t3.medium"

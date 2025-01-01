@@ -22,7 +22,7 @@ variable "cluster_role_name" {
 variable "node_role_name" {
   type        = string
   description = "Name of node role"
-  default     = "eks-demo-node"
+  default     = "AmazonEKSNodeRole"
 }
 
 variable "node_group_desired_capacity" {
